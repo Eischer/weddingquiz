@@ -4,16 +4,18 @@
     text-align: center;
 }
 
-.languagediv{
-    top: 10%;
-    margin:0 auto;
-    text-align: center;
+.ui-panelgrid td {
+    text-align: left;
+    background-color: #FFD9F2;
 }
 
-.logindiv{
-    top: 10%;
-    margin:0 auto;
-    text-align: center;
+.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border-color: #FFD9F2;
+}
+
+.myFontsize {
+    font-size: 10pt;
 }
 
 .logo{
@@ -26,11 +28,6 @@
 .flag{
     height: 20px;
     width: 20px;
-}
-table#login{
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #FFD9F2;
 }
 
 h1{
@@ -47,11 +44,4 @@ h1{
 
 .center{
     text-align: center;
-}
-
-/* SpielManagement */
-.sideBySide {
-    display: flex;
-    background-color: #FFD9F2;
-    margin:0 auto;
 }

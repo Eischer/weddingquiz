@@ -12,57 +12,54 @@
     <h:form>
         <h:panelGroup layout="block" styleClass="startDiv">
             <h:graphicImage class="logo" value="/resources/Logo.JPG" alt="Wedding Logo"/>
-            <h1>Wedding Quiz <br/>Orsolya and Bernhard</h1>
-                <h:panelGroup layout="block" styleClass="languagediv">
-                        <p:selectOneRadio id="customRadio" value="#{startview.language}" layout="custom">
-                            <f:selectItem itemLabel="Red" itemValue="Red" />
-                            <f:selectItem itemLabel="Green" itemValue="Green" />
-                            <f:selectItem itemLabel="Blue" itemValue="Blue" />
-                        </p:selectOneRadio>
-
-                        <h:panelGrid columns="6" cellpadding="5" style="margin: 0 auto;">
-                            <p:radioButton id="opt1" for="customRadio" itemIndex="0" />
-                            <h:outputLabel for="opt1" value="Romaneste" />
-                            <h:graphicImage class="flag" value="/resources/romania.png" alt="Wedding Logo"/>
-
-                            <p:radioButton id="opt2" for="customRadio" itemIndex="1" />
-                            <h:outputLabel for="opt2" value="Deutsch" />
-                            <h:graphicImage class="flag" value="/resources/austria.png" alt="Wedding Logo"/>
-                        </h:panelGrid>
-                </h:panelGroup>
-                <h:panelGroup layout="block" styleClass="loginDiv">
-                    <table id="login">
-                        <tr class="left">
-                            <td>
-                                <h:outputLabel for="firstName" value="Vorname: "/>
-                            </td>
-                            <td>
-                                <h:inputText id="firstName" value="#{startView.firstname}"/>
-                            </td>
-                        </tr>
-                        <tr class="left">
-                            <td>
-                                <h:outputLabel for="surname" value="Nachname: "/>
-                            </td>
-                            <td>
-                                <h:inputText id="surname" value="#{startView.surname}"/>
-                            </td>
-                        </tr>
-                        <tr class="left">
-                            <td>
-                                <h:outputLabel for="password" value="Passwort: "/>
-                            </td>
-                            <td>
-                                <h:inputSecret id="password" value="#{startView.password}"/>
-                            </td>
-                        </tr>
-                        <tr class="right">
-                            <td colspan="2">
-                                <h:commandButton value="Start Quiz" action="#{startview.validateLogin}"/>
-                            </td>
-                        </tr>
-                    </table>
-                </h:panelGroup>
+            <h1>Wedding Quiz</h1>
+                <p:selectOneRadio id="customRadio" value="#{startview.language}" layout="custom">
+                    <f:selectItem itemLabel="Red" itemValue="Red" />
+                    <f:selectItem itemLabel="Green" itemValue="Green" />
+                    <f:selectItem itemLabel="Blue" itemValue="Blue" />
+                </p:selectOneRadio>
+                <p:panelGrid class="myFontsize" style="margin: 0 auto; padding:10px">
+                    <p:row>
+                        <p:column colspan="3">
+                            <p:outputLabel for="firstName" value="Vorname: "/>
+                        </p:column>
+                        <p:column colspan="3">
+                            <h:inputText id="firstName" value="#{startView.firstname}"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="3">
+                            <p:outputLabel for="surname" value="Nachname: "/>
+                        </p:column>
+                        <p:column colspan="3">
+                            <p:inputText id="surname" value="#{startView.surname}"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="3">
+                            <p:outputLabel for="password" value="Passwort: "/>
+                        </p:column>
+                        <p:column colspan="3">
+                            <p:password id="password" value="#{startView.password}"/>
+                        </p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column rowspan="2" colspan="3">Sprache / Limbă</p:column>
+                        <p:column><p:radioButton id="opt1" for="customRadio" itemIndex="0" /></p:column>
+                        <p:column><h:outputLabel for="opt1" value="Romaneste" /></p:column>
+                        <p:column><h:graphicImage class="flag" value="/resources/romania.png" alt="Wedding Logo"/></p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column><p:radioButton id="opt2" for="customRadio" itemIndex="1" /></p:column>
+                        <p:column><h:outputLabel for="opt2" value="Deutsch" /></p:column>
+                        <p:column><h:graphicImage class="flag" value="/resources/austria.png" alt="Wedding Logo"/></p:column>
+                    </p:row>
+                    <p:row>
+                        <p:column colspan="6" style="text-align: right">
+                            <p:commandButton value="Start Quiz" action="#{startview.validateLogin}"/>
+                        </p:column>
+                    </p:row>
+                </p:panelGrid>
             </h:panelGroup>
     </h:form>
 </h:body>
