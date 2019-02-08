@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Welcome to Orsi's and Bernhard's Wedding-quiz</title>
+    <h:outputStylesheet name="css/ghww.css"/>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:panelGroup layout="block" styleClass="startDiv">
+            <h:graphicImage class="logo" value="/resources/Logo.JPG" alt="Wedding Logo"/>
+            <h1>Wedding Quiz <br/>Orsolya and Bernhard</h1>
+                <h:panelGroup layout="block" styleClass="languagediv">
+                        <p:selectOneRadio id="customRadio" value="#{startview.language}" layout="custom">
+                            <f:selectItem itemLabel="Red" itemValue="Red" />
+                            <f:selectItem itemLabel="Green" itemValue="Green" />
+                            <f:selectItem itemLabel="Blue" itemValue="Blue" />
+                        </p:selectOneRadio>
+
+                        <h:panelGrid columns="6" cellpadding="5" style="margin: 0 auto;">
+                            <p:radioButton id="opt1" for="customRadio" itemIndex="0" />
+                            <h:outputLabel for="opt1" value="Romaneste" />
+                            <h:graphicImage class="flag" value="/resources/romania.png" alt="Wedding Logo"/>
+
+                            <p:radioButton id="opt2" for="customRadio" itemIndex="1" />
+                            <h:outputLabel for="opt2" value="Deutsch" />
+                            <h:graphicImage class="flag" value="/resources/austria.png" alt="Wedding Logo"/>
+                        </h:panelGrid>
+                </h:panelGroup>
+                <h:panelGroup layout="block" styleClass="loginDiv">
+                    <table id="login">
+                        <tr class="left">
+                            <td>
+                                <h:outputLabel for="firstName" value="Vorname: "/>
+                            </td>
+                            <td>
+                                <h:inputText id="firstName" value="#{startView.firstname}"/>
+                            </td>
+                        </tr>
+                        <tr class="left">
+                            <td>
+                                <h:outputLabel for="surname" value="Nachname: "/>
+                            </td>
+                            <td>
+                                <h:inputText id="surname" value="#{startView.surname}"/>
+                            </td>
+                        </tr>
+                        <tr class="left">
+                            <td>
+                                <h:outputLabel for="password" value="Passwort: "/>
+                            </td>
+                            <td>
+                                <h:inputSecret id="password" value="#{startView.password}"/>
+                            </td>
+                        </tr>
+                        <tr class="right">
+                            <td colspan="2">
+                                <h:commandButton value="Start Quiz" action="#{startview.validateLogin}"/>
+                            </td>
+                        </tr>
+                    </table>
+                </h:panelGroup>
+            </h:panelGroup>
+    </h:form>
+</h:body>
+</html>

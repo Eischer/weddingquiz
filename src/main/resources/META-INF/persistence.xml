@@ -3,7 +3,7 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
     <persistence-unit name="weddingQuizPU">
-        <jta-data-source>java:/MySqlDataSource</jta-data-source>
+        <jta-data-source>java:/WeddingDataSource</jta-data-source>
         <!-- Configure Second Level Cache for all Entities -->
         <!-- First Level Chache ist Standard in Hibernate
         der Second Level cached auch Enties über Sessiongrenzen hinaus -->

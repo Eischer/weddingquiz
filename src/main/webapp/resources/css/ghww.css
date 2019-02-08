@@ -1,0 +1,57 @@
+.startDiv{
+    top: 10%;
+    margin:0 auto;
+    text-align: center;
+}
+
+.languagediv{
+    top: 10%;
+    margin:0 auto;
+    text-align: center;
+}
+
+.logindiv{
+    top: 10%;
+    margin:0 auto;
+    text-align: center;
+}
+
+.logo{
+    margin-top: 15px;
+    height: 180px;
+    width: 200px;
+    padding-bottom: 20px;
+}
+
+.flag{
+    height: 20px;
+    width: 20px;
+}
+table#login{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #FFD9F2;
+}
+
+h1{
+    color: #FFD9F2;
+}
+
+.left{
+    text-align: left;
+}
+
+.right{
+    text-align: right;
+}
+
+.center{
+    text-align: center;
+}
+
+/* SpielManagement */
+.sideBySide {
+    display: flex;
+    background-color: #FFD9F2;
+    margin:0 auto;
+}
