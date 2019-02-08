@@ -13,10 +13,9 @@
         <h:panelGroup layout="block" styleClass="startDiv">
             <h:graphicImage class="logo" value="/resources/Logo.JPG" alt="Wedding Logo"/>
             <h1>Wedding Quiz</h1>
-                <p:selectOneRadio id="customRadio" value="#{startview.language}" layout="custom">
-                    <f:selectItem itemLabel="Red" itemValue="Red" />
-                    <f:selectItem itemLabel="Green" itemValue="Green" />
-                    <f:selectItem itemLabel="Blue" itemValue="Blue" />
+                <p:selectOneRadio id="customRadio" value="#{startView.language}" layout="custom">
+                    <f:selectItem itemLabel="Romaneste" itemValue="Romaneste" />
+                    <f:selectItem itemLabel="Deutsch" itemValue="Deutsch" />
                 </p:selectOneRadio>
                 <p:panelGrid class="myFontsize" style="margin: 0 auto; padding:10px">
                     <p:row>
@@ -56,7 +55,7 @@
                     </p:row>
                     <p:row>
                         <p:column colspan="6" style="text-align: right">
-                            <p:commandButton value="Start Quiz" action="#{startview.validateLogin}"/>
+                            <p:commandButton value="Start Quiz" action="#{startView.startQuiz}"/>
                         </p:column>
                     </p:row>
                 </p:panelGrid>

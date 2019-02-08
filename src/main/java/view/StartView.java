@@ -15,14 +15,14 @@ public class StartView {
 
     private String password;
 
-    public String validateLogin() {
+    public String startQuiz() {
 //        if (userService.validateUser(this.username, this.password) != null) {
 //            this.currentUser.setUser(userService.getUserByName(this.username));
 //            return "/admin/teams.xhtml";
 //        } else {
 //            return "/login.xhtml";
 //        }
-        return "start.xhtml";
+        return "/quiz.xhtml";
     }
 
     public String getFirstname() {
