@@ -13,7 +13,7 @@ public class Answer {
 
     private String romanian;
 
-    private boolean right;
+    private boolean correct;
 
     @ManyToOne
     @JoinColumn(name = "questionFk")
@@ -43,11 +43,11 @@ public class Answer {
         this.romanian = romanian;
     }
 
-    public boolean isRight() {
-        return right;
+    public boolean isCorrect() {
+        return correct;
     }
 
-    public void setRight(boolean right) {
-        this.right = right;
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
     }
 }

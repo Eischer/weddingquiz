@@ -1,11 +1,10 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@NamedQuery(name = "Question.allQuestions", query = "SELECT q From Question q")
 public class Question {
 
     @Id
@@ -15,6 +14,9 @@ public class Question {
     private String german;
 
     private String romanian;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", orphanRemoval = true)
+    private List<Answer> answers;
 
     public long getQuestionId() {
         return questionId;
@@ -38,5 +40,13 @@ public class Question {
 
     public void setRomanian(String romanian) {
         this.romanian = romanian;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 }
