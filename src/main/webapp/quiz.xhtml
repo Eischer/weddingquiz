@@ -11,7 +11,12 @@
 <h:body>
     <h:form>
     <h1>Hallo <h:outputText value="#{startView.firstname}"/> <h:outputText value="#{startView.surname}"/></h1>
-        <h:outputText value="#{quizView.currentQuestion.german"/>
+        <h:outputText value="#{quizView.currentQuestion.german}"/>
+        <h:dataTable id="question" value="#{quizView.currentQuestion.answers}" var="answer" rowClasses="even, odd">
+            <h:column headerClass="seiderlCountCol">
+                #{answer.german}
+            </h:column>
+        </h:dataTable>
 
     </h:form>
 </h:body>

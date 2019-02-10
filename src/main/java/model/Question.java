@@ -15,7 +15,7 @@ public class Question {
 
     private String romanian;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "question", orphanRemoval = true)
     private List<Answer> answers;
 
     public long getQuestionId() {
