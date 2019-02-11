@@ -11,13 +11,15 @@
 <h:body>
     <h:form>
     <h1>Hallo <h:outputText value="#{startView.firstname}"/> <h:outputText value="#{startView.surname}"/></h1>
-        <h:outputText value="#{quizView.currentQuestion.german}"/>
-        <h:dataTable id="question" value="#{quizView.currentQuestion.answers}" var="answer" rowClasses="even, odd">
-            <h:column headerClass="seiderlCountCol">
-                #{answer.german}
-            </h:column>
-        </h:dataTable>
-
+        <p:dataTable id="questionTable" var="answer" value="#{quizView.currentQuestion.answers}" rowKey="#{answer.answerId}">
+            <f:facet name="header">
+                <h:outputText value="#{quizView.currentQuestion.german}" />
+            </f:facet>
+            <p:column selectionMode="single" style="width:16px;text-align:center"/>
+            <p:column>
+                <h:outputText value="#{answer.german}" />
+            </p:column>
+        </p:dataTable>
     </h:form>
 </h:body>
 </html>
