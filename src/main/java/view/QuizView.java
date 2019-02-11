@@ -1,53 +1,50 @@
 package view;
 
-import model.Person;
 import model.Question;
 import service.QuestionService;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.annotation.ManagedProperty;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class QuizView implements Serializable {
 
-    private Person currentPerson;
-
-    private List<Question> questions;
+    private Integer currentQuestionId;
 
     private Question currentQuestion;
+
+    private List<Question> questions;
 
     @Inject
     private QuestionService questionService;
 
-    private int questionCounter;
-
     @PostConstruct
     public void init() {
-        questions = questionService.getAllQuestions();
-        this.questionCounter = 0;
-        currentQuestion = questions.get(questionCounter);
+        this.questions = this.questionService.getAllQuestions();
+
+        String currentQuestionId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("question_id");
+        if (this.currentQuestionId == null) {
+            this.currentQuestionId = 0;
+        } else {
+            this.currentQuestionId = Integer.parseInt(currentQuestionId);
+        }
+        this.currentQuestion = questions.get(this.currentQuestionId);
     }
 
     public String nextQuestion() {
-        if (this.questionCounter < this.questions.size()) {
-            questionCounter++;
-            currentQuestion = questions.get(questionCounter);
-            return "/quiz.xhml";
+        currentQuestionId++;
+        if (this.currentQuestionId < this.questions.size()) {
+            currentQuestion = questions.get(currentQuestionId);
+            return "/quiz.xhtml";
         }
         return "/end.xhtml";
-    }
-
-    public Person getCurrentPerson() {
-        return currentPerson;
-    }
-
-    public void setCurrentPerson(Person currentPerson) {
-        this.currentPerson = currentPerson;
     }
 
     public List<Question> getQuestions() {
@@ -66,11 +63,11 @@ public class QuizView implements Serializable {
         this.currentQuestion = currentQuestion;
     }
 
-    public int getQuestionCounter() {
-        return questionCounter;
+    public int getCurrentQuestionId() {
+        return currentQuestionId;
     }
 
-    public void setQuestionCounter(int questionCounter) {
-        this.questionCounter = questionCounter;
+    public void setCurrentQuestionId(int currentQuestionId) {
+        this.currentQuestionId = currentQuestionId;
     }
 }
