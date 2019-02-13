@@ -10,7 +10,7 @@
 
 <h:body>
     <h:form>
-    <h1>Hallo <h:outputText value="#{currentUserView.currentPerson.firstname}"/> <h:outputText value="#{currentUserView.currentPerson.surname}"/></h1>
+    <h1>Hallo <h:outputText value="#{quizView.currentPerson.firstname}"/> <h:outputText value="#{quizView.currentPerson.surname}"/></h1>
         <p:dataTable id="questionTable" var="answer" value="#{quizView.currentQuestion.answers}" rowKey="#{answer.answerId}">
             <f:facet name="header">
                 <h:outputText value="#{quizView.currentQuestion.german}" />

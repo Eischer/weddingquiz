@@ -1,11 +1,11 @@
 package view;
 
+import model.Person;
 import model.Question;
 import service.QuestionService;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.annotation.ManagedProperty;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class QuizView implements Serializable {
 
     private Integer currentQuestionId;
@@ -25,26 +25,32 @@ public class QuizView implements Serializable {
     @Inject
     private QuestionService questionService;
 
+    private Person currentPerson;
+
+    public Person getCurrentPerson() {
+        return currentPerson;
+    }
+
+    public void setCurrentPerson(Person currentPerson) {
+        this.currentPerson = currentPerson;
+    }
+
     @PostConstruct
     public void init() {
         this.questions = this.questionService.getAllQuestions();
-
-        String currentQuestionId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("question_id");
-        if (this.currentQuestionId == null) {
-            this.currentQuestionId = 0;
-        } else {
-            this.currentQuestionId = Integer.parseInt(currentQuestionId);
-        }
+        this.currentQuestionId = 0;
         this.currentQuestion = questions.get(this.currentQuestionId);
     }
 
     public String nextQuestion() {
-        currentQuestionId++;
+        this.currentQuestionId++;
         if (this.currentQuestionId < this.questions.size()) {
-            currentQuestion = questions.get(currentQuestionId);
-            return "/quiz.xhtml";
+            this.currentQuestion = questions.get(this.currentQuestionId);
+            return "/quiz.xhtml?faces-redirect=true";
+        } else {
+            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+            return "/end.xhtml?faces-redirect=true";
         }
-        return "/end.xhtml";
     }
 
     public List<Question> getQuestions() {
