@@ -1,6 +1,10 @@
 package view;
 
+import model.Person;
+import service.SessionData;
+
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
@@ -9,36 +13,34 @@ public class StartView {
 
     private String language;
 
-    private String firstname;
+    private String firstName;
 
-    private String surname;
+    private String surName;
 
     private String password;
 
+    @Inject
+    private SessionData sessionData;
+
     public String startQuiz() {
-//        if (userService.validateUser(this.username, this.password) != null) {
-//            this.currentUser.setUser(userService.getUserByName(this.username));
-//            return "/admin/teams.xhtml";
-//        } else {
-//            return "/login.xhtml";
-//        }
+        sessionData.setCurrentPerson(new Person(this.firstName, this.surName, this.language));
         return "/quiz.xhtml";
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstname) {
+        this.firstName = firstname;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setSurName(String surname) {
+        this.surName = surName;
     }
 
     public String getPassword() {

@@ -10,7 +10,8 @@
 
 <h:body>
     <h:form>
-        Danke / Köszönöm szepen / Multu mesc <h:outputText value="#{currentUserView.currentPerson.firstName}"/>!
+        Danke / Köszönöm szepen / Multu mesc <h:outputText value="#{endView.currentPerson.firstName}"/>!
+        Du hast <h:outputText value="#{endView.currentPerson.firstName}"/> von <h:outputText value="#{endView.questionsSize}"/> Fragen richtig beantwortet.
     </h:form>
 </h:body>
 </html>

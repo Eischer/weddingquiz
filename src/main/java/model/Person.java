@@ -11,11 +11,19 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int personId;
 
-    private String vorname;
+    private String firstName;
 
-    private String nachname;
+    private String surName;
+
+    private String language;
 
     private int rightAnswers;
+
+    public Person (String firstName, String surName, String language) {
+        this.firstName = firstName;
+        this.surName = surName;
+        this.language = language;
+    }
 
     public int getPersonId() {
         return personId;
@@ -25,20 +33,28 @@ public class Person {
         this.personId = personId;
     }
 
-    public String getVorname() {
-        return vorname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getNachname() {
-        return nachname;
+    public String getSurName() {
+        return surName;
     }
 
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    public void setSurName(String surName) {
+        this.surName = surName;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public int getRightAnswers() {

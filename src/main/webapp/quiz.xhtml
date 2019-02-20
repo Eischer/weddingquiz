@@ -10,8 +10,11 @@
 
 <h:body>
     <h:form>
-    <h1>Hallo <h:outputText value="#{quizView.currentPerson.firstname}"/> <h:outputText value="#{quizView.currentPerson.surname}"/></h1>
-        <p:dataTable id="questionTable" var="answer" value="#{quizView.currentQuestion.answers}" rowKey="#{answer.answerId}">
+    <h1>Hallo <h:outputText value="#{quizView.currentPerson.firstName}"/> <h:outputText value="#{quizView.currentPerson.surName}"/></h1>
+        <p:dataTable id="questionTable" var="answer"
+                     value="#{quizView.currentQuestion.answers}"
+                     selection="#{quizView.selectedAnswer}"
+                     rowKey="#{answer.answerId}">
             <f:facet name="header">
                 <h:outputText value="#{quizView.currentQuestion.german}" />
             </f:facet>
