@@ -1,6 +1,7 @@
 package view;
 
 import model.Person;
+import service.PersonService;
 import service.SessionData;
 
 import javax.enterprise.context.RequestScoped;
@@ -22,8 +23,13 @@ public class StartView {
     @Inject
     private SessionData sessionData;
 
+    @Inject
+    private PersonService personService;
+
     public String startQuiz() {
-        sessionData.setCurrentPerson(new Person(this.firstName, this.surName, this.language));
+        Person person = new Person(this.firstName, this.surName, this.language);
+        personService.savePerson(person);
+        sessionData.setCurrentPerson(person);
         return "/quiz.xhtml";
     }
 

@@ -1,8 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html">
 <h:head>
     <title>Welcome to Orsi's and Bernhard's Wedding-quiz</title>
     <h:outputStylesheet name="css/ghww.css"/>
@@ -11,7 +9,7 @@
 <h:body>
     <h:form>
         Danke / Köszönöm szepen / Multu mesc <h:outputText value="#{endView.currentPerson.firstName}"/>!
-        Du hast <h:outputText value="#{endView.currentPerson.firstName}"/> von <h:outputText value="#{endView.questionsSize}"/> Fragen richtig beantwortet.
+        Du hast <h:outputText value="#{endView.currentPerson.rightAnswers}"/> von <h:outputText value="#{endView.questionsSize}"/> Fragen richtig beantwortet.
     </h:form>
 </h:body>
 </html>

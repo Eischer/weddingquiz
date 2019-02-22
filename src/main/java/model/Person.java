@@ -19,6 +19,10 @@ public class Person {
 
     private int rightAnswers;
 
+    public Person() {
+        // default constructor for hibernate
+    }
+
     public Person (String firstName, String surName, String language) {
         this.firstName = firstName;
         this.surName = surName;
