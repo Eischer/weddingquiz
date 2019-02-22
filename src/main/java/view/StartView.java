@@ -39,7 +39,7 @@ public class StartView {
         return surName;
     }
 
-    public void setSurName(String surname) {
+    public void setSurName(String surName) {
         this.surName = surName;
     }
 
