@@ -19,6 +19,17 @@ public class Answer {
     @JoinColumn(name = "questionFk")
     private Question question;
 
+    public Answer() {
+        // Default constructor for JPA
+    }
+
+    public Answer(String german, String romanian, boolean correct, Question question) {
+        this.german = german;
+        this.romanian = romanian;
+        this.correct = correct;
+        this.question = question;
+    }
+
     public long getAnswerId() {
         return answerId;
     }
@@ -49,5 +60,13 @@ public class Answer {
 
     public void setCorrect(boolean correct) {
         this.correct = correct;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 }

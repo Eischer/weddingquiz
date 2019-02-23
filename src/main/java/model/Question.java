@@ -18,6 +18,16 @@ public class Question {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "question", orphanRemoval = true)
     private List<Answer> answers;
 
+    public Question() {
+        // Default constructor for JPA
+    }
+
+    public Question(String german, String romanian, List<Answer> answers) {
+        this.german = german;
+        this.romanian = romanian;
+        this.answers = answers;
+    }
+
     public long getQuestionId() {
         return questionId;
     }

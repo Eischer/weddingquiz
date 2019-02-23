@@ -11,9 +11,13 @@ import java.util.List;
 public class QuestionService {
 
     @PersistenceContext(unitName = "weddingQuizPU")
-    protected EntityManager entityManager;
+    private EntityManager entityManager;
 
     public List<Question> getAllQuestions() {
         return entityManager.createNamedQuery("Question.allQuestions", Question.class).getResultList();
+    }
+
+    public void saveQuestion(Question question) {
+        entityManager.persist(question);
     }
 }

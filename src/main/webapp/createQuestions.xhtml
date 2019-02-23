@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Welcome to Orsi's and Bernhard's Wedding-quiz</title>
+    <h:outputStylesheet name="css/ghww.css"/>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p>
+            Frage: <br/>
+            De: <p:inputTextarea rows="1" cols="50"  id="question_de" value="#{createQuestionsView.question_de}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="question_ro" value="#{createQuestionsView.question_ro}"/>
+        </p>
+        <p>
+            Antwort falsch: <br/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer1_de" value="#{createQuestionsView.answers_de[0]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer1_ro" value="#{createQuestionsView.answers_ro[0]}"/>
+        </p>
+        <p>
+            Antwort falsch: <br/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer2_de" value="#{createQuestionsView.answers_de[1]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer2_ro" value="#{createQuestionsView.answers_ro[1]}"/>
+        </p>
+        <p>
+            Antwort falsch: <br/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer3_de" value="#{createQuestionsView.answers_de[2]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer3_ro" value="#{createQuestionsView.answers_ro[2]}"/>
+        </p>
+        <p>
+            Antwort falsch: <br/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer4_de" value="#{createQuestionsView.answers_de[3]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer4_ro" value="#{createQuestionsView.answers_ro[3]}"/>
+        </p>
+        <p>
+            Antwort falsch: <br/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer5_de" value="#{createQuestionsView.answers_de[4]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer5_ro" value="#{createQuestionsView.answers_ro[4]}"/>
+        </p>
+        <p>
+            Antwort richtig: <br/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer6_de" value="#{createQuestionsView.answers_de[5]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer6_ro" value="#{createQuestionsView.answers_ro[5]}"/>
+        </p>
+        <p:commandButton value="Save Question" action="#{createQuestionsView.saveQuestion}"/>
+    </h:form>
+</h:body>
+</html>
