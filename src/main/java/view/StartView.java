@@ -30,7 +30,7 @@ public class StartView {
         Person person = new Person(this.firstName, this.surName, this.language);
         personService.savePerson(person);
         sessionData.setCurrentPerson(person);
-        return "/quiz.xhtml";
+        return "/quiz.xhtml?faces-redirect=true";
     }
 
     public String getFirstName() {

@@ -15,6 +15,10 @@ public class Question {
 
     private String romanian;
 
+    @ManyToOne
+    @JoinColumn(name = "categoryfk")
+    private Category category;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "question", orphanRemoval = true)
     private List<Answer> answers;
 
@@ -22,10 +26,11 @@ public class Question {
         // Default constructor for JPA
     }
 
-    public Question(String german, String romanian, List<Answer> answers) {
+    public Question(String german, String romanian, List<Answer> answers, Category category) {
         this.german = german;
         this.romanian = romanian;
         this.answers = answers;
+        this.category = category;
     }
 
     public long getQuestionId() {
@@ -50,6 +55,14 @@ public class Question {
 
     public void setRomanian(String romanian) {
         this.romanian = romanian;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public List<Answer> getAnswers() {

@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Weddingquiz - Admin</title>
+    <h:outputStylesheet name="css/ghww.css"/>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p>
+            Kategorie: <p:inputText rows="1" cols="50"  id="question_de" value="#{createCategoryView.categoryName}"/>
+            Ordering Number: <p:inputText rows="1" cols="50"  id="question_ro" value="#{createCategoryView.categoryOrderingNumber}"/>
+        </p>
+        <p:commandButton value="Save Category" action="#{createCategoryView.saveCategory}"/>
+    </h:form>
+</h:body>
+</html>
