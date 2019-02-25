@@ -11,25 +11,23 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Named
 @RequestScoped
 public class CreateQuestionsView {
 
-    private String question_de;
+    private String questionDe;
 
-    private String question_ro;
+    private String questionRo;
 
-    private String[] answers_de;
+    private String[] answersDe;
 
-    private String[] answers_ro;
+    private String[] answersRo;
 
-    private String category;
+    private Category category;
 
-    private Map<Long,String> categories;
+    private List<Category> categories;
 
     @Inject
     private QuestionService questionService;
@@ -39,84 +37,85 @@ public class CreateQuestionsView {
 
     @PostConstruct
     public void init() {
-        this.answers_de = new String[] {"", "", "", "", "", ""};
-        this.answers_ro = new String[] {"", "", "", "", "", ""};
-        this.categories = new HashMap<>();
-        for (Category category: categoryService.getAllCategories()) {
-           this.categories.put(category.getCategoryId(), category.getName());
-        }
+        this.categories = categoryService.getAllCategories();
+        clear();
+    }
+
+    private void clear() {
+        this.answersDe = new String[] {"", "", "", "", "", ""};
+        this.answersRo = new String[] {"", "", "", "", "", ""};
     }
 
     public void saveQuestion() {
         List<Answer> answers = new ArrayList<>();
 
-        Category category = getCorrespondingCategory();
-        categoryService.saveCategory(category);
-        Question question = new Question(this.question_de, this.question_ro, null, category);
+        Question question = new Question(this.questionDe, this.questionRo, null, null);
         for (int i=0; i<6; i++) {
-            answers.add(new Answer(answers_de[i], answers_ro[i], i == 5, question));
+            answers.add(new Answer(answersDe[i], answersRo[i], i == 5, question));
         }
         question.setAnswers(answers);
         questionService.saveQuestion(question);
-        category.getQuestions().add(question);
-        categoryService.update(category);
 
     }
 
-    private Category getCorrespondingCategory() {
-        for (Map.Entry<Long, String> category : this.categories.entrySet()) {
-            if (category.getValue().equals(this.category)) {
-                return new Category(category.getKey(), category.getValue());
+    public Category getCategoryById(Long categoryId) {
+        if (categoryId == null) {
+            throw new IllegalArgumentException("no id");
+        } else {
+            for (Category currentCategory : this.categories) {
+                if (categoryId.equals(currentCategory.getCategoryId())) {
+                    return currentCategory;
+                }
             }
+            return null;
         }
-        return null;
     }
 
-    public String getQuestion_de() {
-        return question_de;
+    public String getQuestionDe() {
+        return questionDe;
     }
 
-    public void setQuestion_de(String question_de) {
-        this.question_de = question_de;
+    public void setQuestionDe(String questionDe) {
+        this.questionDe = questionDe;
     }
 
-    public String getQuestion_ro() {
-        return question_ro;
+    public String getQuestionRo() {
+        return questionRo;
     }
 
-    public void setQuestion_ro(String question_ro) {
-        this.question_ro = question_ro;
+    public void setQuestionRo(String questionRo) {
+        this.questionRo = questionRo;
     }
 
-    public String[] getAnswers_de() {
-        return answers_de;
+    public String[] getAnswersDe() {
+        return answersDe;
     }
 
-    public void setAnswers_de(String[] answers_de) {
-        this.answers_de = answers_de;
+    public void setAnswersDe(String[] answersDe) {
+        this.answersDe = answersDe;
     }
 
-    public String[] getAnswers_ro() {
-        return answers_ro;
+    public String[] getAnswersRo() {
+        return answersRo;
     }
 
-    public void setAnswers_ro(String[] answers_ro) {
-        this.answers_ro = answers_ro;
+    public void setAnswersRo(String[] answersRo) {
+        this.answersRo = answersRo;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    public Map<Long, String> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Map<Long, String> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 }

@@ -11,46 +11,46 @@
 <h:body>
     <h:form>
         <p>
-            Kategory:
-            <p:selectOneMenu id="category" value="#{createQuestionsView.category}" style="width:150px">
+            Kategorie:
+            <p:selectOneMenu id="categoryForQuestion" value="#{createQuestionsView.category}" converter="categoryConverter">
                 <f:selectItem itemLabel="Select Category" itemValue="" noSelectionOption="true" />
-                <f:selectItems value="#{createQuestionsView.categories}" />
+                <f:selectItems value="#{createQuestionsView.categories}" var="oneCategory" itemValue="#{oneCategory}" itemLabel="#{oneCategory.name}"/>
             </p:selectOneMenu>
         </p>
         <p>
             Frage: <br/>
-            De: <p:inputTextarea rows="1" cols="50"  id="question_de" value="#{createQuestionsView.question_de}"/>
-            Ro: <p:inputTextarea rows="1" cols="50"  id="question_ro" value="#{createQuestionsView.question_ro}"/>
+            De: <p:inputTextarea rows="1" cols="50"  id="questionDe" value="#{createQuestionsView.questionDe}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="questionRo" value="#{createQuestionsView.questionRo}"/>
         </p>
         <p>
             Antwort falsch: <br/>
-            De: <p:inputTextarea rows="1" cols="50"  id="answer1_de" value="#{createQuestionsView.answers_de[0]}"/>
-            Ro: <p:inputTextarea rows="1" cols="50"  id="answer1_ro" value="#{createQuestionsView.answers_ro[0]}"/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer1_de" value="#{createQuestionsView.answersDe[0]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer1_ro" value="#{createQuestionsView.answersRo[0]}"/>
         </p>
         <p>
             Antwort falsch: <br/>
-            De: <p:inputTextarea rows="1" cols="50"  id="answer2_de" value="#{createQuestionsView.answers_de[1]}"/>
-            Ro: <p:inputTextarea rows="1" cols="50"  id="answer2_ro" value="#{createQuestionsView.answers_ro[1]}"/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer2_de" value="#{createQuestionsView.answersDe[1]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer2_ro" value="#{createQuestionsView.answersRo[1]}"/>
         </p>
         <p>
             Antwort falsch: <br/>
-            De: <p:inputTextarea rows="1" cols="50"  id="answer3_de" value="#{createQuestionsView.answers_de[2]}"/>
-            Ro: <p:inputTextarea rows="1" cols="50"  id="answer3_ro" value="#{createQuestionsView.answers_ro[2]}"/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer3_de" value="#{createQuestionsView.answersDe[2]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer3_ro" value="#{createQuestionsView.answersRo[2]}"/>
         </p>
         <p>
             Antwort falsch: <br/>
-            De: <p:inputTextarea rows="1" cols="50"  id="answer4_de" value="#{createQuestionsView.answers_de[3]}"/>
-            Ro: <p:inputTextarea rows="1" cols="50"  id="answer4_ro" value="#{createQuestionsView.answers_ro[3]}"/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer4_de" value="#{createQuestionsView.answersDe[3]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer4_ro" value="#{createQuestionsView.answersRo[3]}"/>
         </p>
         <p>
             Antwort falsch: <br/>
-            De: <p:inputTextarea rows="1" cols="50"  id="answer5_de" value="#{createQuestionsView.answers_de[4]}"/>
-            Ro: <p:inputTextarea rows="1" cols="50"  id="answer5_ro" value="#{createQuestionsView.answers_ro[4]}"/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer5_de" value="#{createQuestionsView.answersDe[4]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer5_ro" value="#{createQuestionsView.answersRo[4]}"/>
         </p>
         <p>
             Antwort richtig: <br/>
-            De: <p:inputTextarea rows="1" cols="50"  id="answer6_de" value="#{createQuestionsView.answers_de[5]}"/>
-            Ro: <p:inputTextarea rows="1" cols="50"  id="answer6_ro" value="#{createQuestionsView.answers_ro[5]}"/>
+            De: <p:inputTextarea rows="1" cols="50"  id="answer6_de" value="#{createQuestionsView.answersDe[5]}"/>
+            Ro: <p:inputTextarea rows="1" cols="50"  id="answer6_ro" value="#{createQuestionsView.answersRo[5]}"/>
         </p>
         <p:commandButton value="Save Question" action="#{createQuestionsView.saveQuestion}"/>
     </h:form>
