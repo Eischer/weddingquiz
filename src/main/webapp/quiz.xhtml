@@ -11,6 +11,7 @@
 <h:body>
     <h:form>
     <h1>Hallo <h:outputText value="#{quizView.currentPerson.firstName}"/> <h:outputText value="#{quizView.currentPerson.surName}"/></h1>
+        <h2>Kategorie: <h:outputText value="#{quizView.currentQuestion.category.name}"/> </h2>
         <p:dataTable id="questionTable" var="answer"
                      value="#{quizView.currentQuestion.answers}"
                      selection="#{quizView.selectedAnswer}"

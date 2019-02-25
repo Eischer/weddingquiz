@@ -49,7 +49,9 @@ public class CreateQuestionsView {
     public String saveQuestion() {
         List<Answer> answers = new ArrayList<>();
 
-        Question question = new Question(this.questionDe, this.questionRo, null, null);
+        Category categoryToPersist = new Category(this.category.getCategoryId(), this.category.getName());
+        categoryService.saveCategory(categoryToPersist);
+        Question question = new Question(this.questionDe, this.questionRo, null, categoryToPersist);
         for (int i=0; i<6; i++) {
             answers.add(new Answer(answersDe[i], answersRo[i], i == 5, question));
         }
