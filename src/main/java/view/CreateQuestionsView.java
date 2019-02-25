@@ -46,7 +46,7 @@ public class CreateQuestionsView {
         this.answersRo = new String[] {"", "", "", "", "", ""};
     }
 
-    public void saveQuestion() {
+    public String saveQuestion() {
         List<Answer> answers = new ArrayList<>();
 
         Question question = new Question(this.questionDe, this.questionRo, null, null);
@@ -55,7 +55,7 @@ public class CreateQuestionsView {
         }
         question.setAnswers(answers);
         questionService.saveQuestion(question);
-
+        return "/createQuestions.xhtml?faces-redirect=true";
     }
 
     public Category getCategoryById(Long categoryId) {
