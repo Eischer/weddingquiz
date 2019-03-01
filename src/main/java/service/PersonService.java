@@ -5,6 +5,7 @@ import model.Person;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Stateless
 public class PersonService {
@@ -21,9 +22,13 @@ public class PersonService {
     }
 
     public boolean hasNotAlreadyParticipated(String firstName, String surName) {
-       return entityManager.createNamedQuery("Person.getPersonByName")
+       return entityManager.createNamedQuery("Person.getPersonByName", Person.class)
                 .setParameter("firstName", firstName)
                 .setParameter("surName", surName)
                 .getResultList().isEmpty();
+    }
+
+    public List<Person> getAllPersons() {
+        return entityManager.createNamedQuery("Person.getAllPersons", Person.class).getResultList();
     }
 }

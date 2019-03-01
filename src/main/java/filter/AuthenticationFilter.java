@@ -33,7 +33,6 @@ public class AuthenticationFilter implements javax.servlet.Filter {
         String reqURI = httpRequest.getRequestURI();
 
         if ((reqURI.startsWith("/wedding/quiz.xhtml")
-                || reqURI.startsWith("/wedding/end.xhtml")
                 ||  reqURI.startsWith("/wedding/createCategory.xhtml")
                 || reqURI.startsWith("/wedding/createQuestions.xhtml")) && sessionData.getCurrentPerson() == null) {
             if ("partial/ajax".equals(httpRequest.getHeader("Faces-Request"))) {

@@ -44,7 +44,7 @@ public class QuizView implements Serializable {
         if (this.currentQuestionId < this.sessionData.getQuestionsSize()) {
             return "/quiz.xhtml?faces-redirect=true";
         } else {
-            return "/end.xhtml?faces-redirect=true";
+            return "/result.xhtml?faces-redirect=true";
         }
     }
 

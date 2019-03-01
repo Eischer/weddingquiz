@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@NamedQuery(name = "Person.getPersonByName", query = "SELECT p From Person P WHERE p.firstName = :firstName AND p.surName = :surName")
+@NamedQueries({
+        @NamedQuery(name = "Person.getPersonByName", query = "SELECT p From Person P WHERE p.firstName = :firstName AND p.surName = :surName"),
+        @NamedQuery(name = "Person.getAllPersons", query = "SELECT p From Person P order by p.rightAnswers DESC")})
 public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
