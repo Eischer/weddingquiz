@@ -9,57 +9,62 @@
 </h:head>
 
 <h:body>
-    <h:form>
+    <h:form id="startForm">
         <h:panelGroup layout="block" styleClass="startDiv">
             <h:graphicImage class="logo" value="/resources/Logo.JPG" alt="Wedding Logo"/>
             <h1>Wedding Quiz</h1>
-                <p:selectOneRadio id="customRadio" value="#{startView.language}" layout="custom">
-                    <f:selectItem itemLabel="Romaneste" itemValue="Romaneste" />
-                    <f:selectItem itemLabel="Deutsch" itemValue="Deutsch" />
-                </p:selectOneRadio>
-                <p:panelGrid class="myFontsize" style="margin: 0 auto; padding:10px">
-                    <p:row>
-                        <p:column colspan="3">
-                            <p:outputLabel for="firstName" value="Vorname: "/>
-                        </p:column>
-                        <p:column colspan="3">
-                            <h:inputText id="firstName" value="#{startView.firstName}"/>
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column colspan="3">
-                            <p:outputLabel for="surName" value="Nachname: "/>
-                        </p:column>
-                        <p:column colspan="3">
-                            <p:inputText id="surName" value="#{startView.surName}"/>
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column colspan="3">
-                            <p:outputLabel for="password" value="Passwort: "/>
-                        </p:column>
-                        <p:column colspan="3">
-                            <p:password id="password" value="#{startView.password}"/>
-                        </p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column rowspan="2" colspan="3">Sprache / Limbă</p:column>
-                        <p:column><p:radioButton id="opt1" for="customRadio" itemIndex="0" /></p:column>
-                        <p:column><h:outputLabel for="opt1" value="Romaneste" /></p:column>
-                        <p:column><h:graphicImage class="flag" value="/resources/romania.png" alt="Wedding Logo"/></p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column><p:radioButton id="opt2" for="customRadio" itemIndex="1" /></p:column>
-                        <p:column><h:outputLabel for="opt2" value="Deutsch" /></p:column>
-                        <p:column><h:graphicImage class="flag" value="/resources/austria.png" alt="Wedding Logo"/></p:column>
-                    </p:row>
-                    <p:row>
-                        <p:column colspan="6" style="text-align: right">
-                            <p:commandButton value="Start Quiz" action="#{startView.startQuiz}"/>
-                        </p:column>
-                    </p:row>
-                </p:panelGrid>
-            </h:panelGroup>
+            <p:selectOneRadio id="customRadio" value="#{startView.language}" layout="custom">
+                <f:selectItem itemLabel="Romaneste" itemValue="Romaneste"/>
+                <f:selectItem itemLabel="Deutsch" itemValue="Deutsch"/>
+            </p:selectOneRadio>
+            <p:panelGrid class="myFontsize" style="margin: 0 auto; padding:10px">
+                <p:row>
+                    <p:column colspan="3">
+                        <p:outputLabel for="firstName" value="Vorname: "/>
+                    </p:column>
+                    <p:column colspan="3">
+                        <h:inputText id="firstName" value="#{startView.firstName}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="3">
+                        <p:outputLabel for="surName" value="Nachname: "/>
+                    </p:column>
+                    <p:column colspan="3">
+                        <p:inputText id="surName" value="#{startView.surName}"/>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="3">
+                        <p:outputLabel for="thePassword" value="Passwort: "/>
+                    </p:column>
+                    <p:column colspan="3">
+                        <p:password id="thePassword" value="#{startView.thePassword}">
+                            <f:validator validatorId="passwordValidator"/>
+                        </p:password>
+                    </p:column>
+                </p:row>
+                <p:row>
+                    <p:column rowspan="2" colspan="3">Sprache / Limbă</p:column>
+                    <p:column><p:radioButton id="opt1" for="customRadio" itemIndex="0"/></p:column>
+                    <p:column><h:outputLabel for="opt1" value="Romaneste"/></p:column>
+                    <p:column><h:graphicImage class="flag" value="/resources/romania.png"
+                                              alt="Wedding Logo"/></p:column>
+                </p:row>
+                <p:row>
+                    <p:column><p:radioButton id="opt2" for="customRadio" itemIndex="1"/></p:column>
+                    <p:column><h:outputLabel for="opt2" value="Deutsch"/></p:column>
+                    <p:column><h:graphicImage class="flag" value="/resources/austria.png"
+                                              alt="Wedding Logo"/></p:column>
+                </p:row>
+                <p:row>
+                    <p:column colspan="6" style="text-align: right">
+                        <p:commandButton value="Start Quiz" action="#{startView.startQuiz}" update="@form"/>
+                    </p:column>
+                </p:row>
+            </p:panelGrid>
+            <h:message for="thePassword" class="errorMessage"/>
+        </h:panelGroup>
     </h:form>
 </h:body>
 </html>

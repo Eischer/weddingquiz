@@ -18,7 +18,7 @@ public class StartView {
 
     private String surName;
 
-    private String password;
+    private String thePassword;
 
     @Inject
     private SessionData sessionData;
@@ -49,12 +49,12 @@ public class StartView {
         this.surName = surName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getThePassword() {
+        return thePassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setThePassword(String thePassword) {
+        this.thePassword = thePassword;
     }
 
     public String getLanguage() {
