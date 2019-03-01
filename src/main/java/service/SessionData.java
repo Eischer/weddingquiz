@@ -6,9 +6,11 @@ import model.Question;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
+@Named
 @SessionScoped
 public class SessionData implements Serializable {
 

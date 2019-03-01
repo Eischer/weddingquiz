@@ -17,11 +17,11 @@
                      selection="#{quizView.selectedAnswer}"
                      rowKey="#{answer.answerId}">
             <f:facet name="header">
-                <h:outputText value="#{quizView.currentQuestion.german}" />
+                <h:outputText value="#{sessionData.isGerman() ? quizView.currentQuestion.german : quizView.currentQuestion.romanian}"/>
             </f:facet>
             <p:column selectionMode="single" style="width:16px;text-align:center"/>
             <p:column>
-                <h:outputText value="#{answer.german}" />
+                <h:outputText value="#{sessionData.isGerman() ? answer.german : answer.romanian}" />
             </p:column>
         </p:dataTable>
         <p:commandButton value="Next" action="#{quizView.nextQuestion}">
