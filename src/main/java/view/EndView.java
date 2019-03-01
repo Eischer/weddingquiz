@@ -29,7 +29,7 @@ public class EndView {
         this.currentPerson = sessionData.getCurrentPerson();
         this.questionsSize = sessionData.getQuestionsSize();
         this.currentPerson.setRightAnswers(sessionData.getCorrectAnswsers());
-        personService.update(currentPerson);
+        personService.savePerson(currentPerson);
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
     }
 

@@ -22,6 +22,8 @@ public class SessionData implements Serializable {
 
     private String language;
 
+    private Integer questioncounter;
+
     @Inject
     private QuestionService questionService;
 
@@ -72,5 +74,13 @@ public class SessionData implements Serializable {
 
     public boolean isGerman() {
         return this.language.equals("Deutsch");
+    }
+
+    public Integer getQuestioncounter() {
+        return questioncounter;
+    }
+
+    public void setQuestioncounter(Integer questioncounter) {
+        this.questioncounter = questioncounter;
     }
 }

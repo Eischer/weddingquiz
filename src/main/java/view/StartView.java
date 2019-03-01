@@ -1,7 +1,6 @@
 package view;
 
 import model.Person;
-import service.PersonService;
 import service.SessionData;
 
 import javax.enterprise.context.RequestScoped;
@@ -25,14 +24,11 @@ public class StartView {
     @Inject
     private SessionData sessionData;
 
-    @Inject
-    private PersonService personService;
-
     public String startQuiz() {
         Person person = new Person(this.firstName, this.surName, this.language);
-        personService.savePerson(person);
         sessionData.setCurrentPerson(person);
         sessionData.setLanguage(language);
+        sessionData.setCorrectAnswsers(0);
         if (language == null || language.isEmpty()) {
             FacesMessage message = new FacesMessage("Wähle bitte eine Sprache aus / Selectați o limbă, va rog");
             FacesContext context = FacesContext.getCurrentInstance();

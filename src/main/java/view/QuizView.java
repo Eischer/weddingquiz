@@ -3,18 +3,17 @@ package view;
 import model.Answer;
 import model.Person;
 import model.Question;
-import service.QuestionService;
 import service.SessionData;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Collections;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class QuizView implements Serializable {
 
     private Integer currentQuestionId;
@@ -28,8 +27,11 @@ public class QuizView implements Serializable {
 
     @PostConstruct
     public void init() {
-        this.sessionData.setCorrectAnswsers(0);
-        this.currentQuestionId = 0;
+        if (sessionData.getQuestioncounter() == null) {
+            this.currentQuestionId = 0;
+        } else {
+            this.currentQuestionId = sessionData.getQuestioncounter();
+        }
         this.currentQuestion = this.sessionData.getQuestions().get(this.currentQuestionId);
         Collections.shuffle(this.currentQuestion.getAnswers());
     }
@@ -38,11 +40,8 @@ public class QuizView implements Serializable {
         if (selectedAnswer.isCorrect()) {
             this.sessionData.incrementCorrectAnswer();
         }
-
-        this.currentQuestionId++;
+        sessionData.setQuestioncounter(++this.currentQuestionId);
         if (this.currentQuestionId < this.sessionData.getQuestionsSize()) {
-            this.currentQuestion = this.sessionData.getQuestions().get(this.currentQuestionId);
-            Collections.shuffle(this.currentQuestion.getAnswers());
             return "/quiz.xhtml?faces-redirect=true";
         } else {
             return "/end.xhtml?faces-redirect=true";
@@ -55,14 +54,6 @@ public class QuizView implements Serializable {
 
     public void setCurrentQuestion(Question currentQuestion) {
         this.currentQuestion = currentQuestion;
-    }
-
-    public int getCurrentQuestionId() {
-        return currentQuestionId;
-    }
-
-    public void setCurrentQuestionId(int currentQuestionId) {
-        this.currentQuestionId = currentQuestionId;
     }
 
     public Answer getSelectedAnswer() {
