@@ -18,6 +18,8 @@ public class SessionData implements Serializable {
 
     private List<Question> questions;
 
+    private String language;
+
     @Inject
     private QuestionService questionService;
 
@@ -56,5 +58,17 @@ public class SessionData implements Serializable {
 
     public Integer getQuestionsSize() {
         return this.questions.size();
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public boolean isGerman() {
+        return this.language.equals("Deutsch");
     }
 }

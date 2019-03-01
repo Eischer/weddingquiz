@@ -23,7 +23,7 @@
                         <p:outputLabel for="firstName" value="Vorname: "/>
                     </p:column>
                     <p:column colspan="3">
-                        <h:inputText id="firstName" value="#{startView.firstName}"/>
+                        <h:inputText id="firstName" value="#{startView.firstName}" required="true"/>
                     </p:column>
                 </p:row>
                 <p:row>
@@ -31,7 +31,7 @@
                         <p:outputLabel for="surName" value="Nachname: "/>
                     </p:column>
                     <p:column colspan="3">
-                        <p:inputText id="surName" value="#{startView.surName}"/>
+                        <p:inputText id="surName" value="#{startView.surName}" required="true"/>
                     </p:column>
                 </p:row>
                 <p:row>
@@ -39,7 +39,7 @@
                         <p:outputLabel for="thePassword" value="Passwort: "/>
                     </p:column>
                     <p:column colspan="3">
-                        <p:password id="thePassword" value="#{startView.thePassword}">
+                        <p:password id="thePassword" value="#{startView.thePassword}" required="true" requiredMessage="Wrong Password">
                             <f:validator validatorId="passwordValidator"/>
                         </p:password>
                     </p:column>
@@ -59,11 +59,12 @@
                 </p:row>
                 <p:row>
                     <p:column colspan="6" style="text-align: right">
-                        <p:commandButton value="Start Quiz" action="#{startView.startQuiz}" update="@form"/>
+                        <p:commandButton id="goStartQuiz" value="Start Quiz" action="#{startView.startQuiz}" update="@form"/>
                     </p:column>
                 </p:row>
             </p:panelGrid>
             <h:message for="thePassword" class="errorMessage"/>
+            <h:message for="goStartQuiz" class="errorMessage"/>
         </h:panelGroup>
     </h:form>
 </h:body>

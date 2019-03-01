@@ -5,6 +5,8 @@ import service.PersonService;
 import service.SessionData;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,13 +14,13 @@ import javax.inject.Named;
 @RequestScoped
 public class StartView {
 
-    private String language;
-
     private String firstName;
 
     private String surName;
 
     private String thePassword;
+
+    private String language;
 
     @Inject
     private SessionData sessionData;
@@ -30,6 +32,13 @@ public class StartView {
         Person person = new Person(this.firstName, this.surName, this.language);
         personService.savePerson(person);
         sessionData.setCurrentPerson(person);
+        sessionData.setLanguage(language);
+        if (language == null || language.isEmpty()) {
+            FacesMessage message = new FacesMessage("SPRACHE!?!?!?");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("startForm:goStartQuiz", message);
+            return "";
+        }
         return "/quiz.xhtml?faces-redirect=true";
     }
 
