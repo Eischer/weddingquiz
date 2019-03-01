@@ -11,7 +11,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Collections;
 
 @Named
 @SessionScoped
@@ -31,6 +31,7 @@ public class QuizView implements Serializable {
         this.sessionData.setCorrectAnswsers(0);
         this.currentQuestionId = 0;
         this.currentQuestion = this.sessionData.getQuestions().get(this.currentQuestionId);
+        Collections.shuffle(this.currentQuestion.getAnswers());
     }
 
     public String nextQuestion() {
@@ -41,6 +42,7 @@ public class QuizView implements Serializable {
         this.currentQuestionId++;
         if (this.currentQuestionId < this.sessionData.getQuestionsSize()) {
             this.currentQuestion = this.sessionData.getQuestions().get(this.currentQuestionId);
+            Collections.shuffle(this.currentQuestion.getAnswers());
             return "/quiz.xhtml?faces-redirect=true";
         } else {
             return "/end.xhtml?faces-redirect=true";

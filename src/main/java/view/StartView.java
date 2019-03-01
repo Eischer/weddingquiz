@@ -34,7 +34,7 @@ public class StartView {
         sessionData.setCurrentPerson(person);
         sessionData.setLanguage(language);
         if (language == null || language.isEmpty()) {
-            FacesMessage message = new FacesMessage("SPRACHE!?!?!?");
+            FacesMessage message = new FacesMessage("Wähle bitte eine Sprache aus / Selectați o limbă, va rog");
             FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage("startForm:goStartQuiz", message);
             return "";
