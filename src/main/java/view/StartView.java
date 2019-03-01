@@ -1,6 +1,7 @@
 package view;
 
 import model.Person;
+import service.PersonService;
 import service.SessionData;
 
 import javax.enterprise.context.RequestScoped;
@@ -22,6 +23,9 @@ public class StartView {
     private String language;
 
     @Inject
+    private PersonService personService;
+
+    @Inject
     private SessionData sessionData;
 
     public String startQuiz() {
@@ -35,7 +39,14 @@ public class StartView {
             context.addMessage("startForm:goStartQuiz", message);
             return "";
         }
-        return "/quiz.xhtml?faces-redirect=true";
+        if (personService.hasNotAlreadyParticipated(this.firstName, this.surName)) {
+            return "/quiz.xhtml?faces-redirect=true";
+        } else {
+            FacesMessage message = new FacesMessage(this.firstName +  " " + this.surName + ", du hast bereits teilgenommen. / ați participat deja.");
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage("startForm:surName", message);
+            return "";
+        }
     }
 
     public String getFirstName() {
