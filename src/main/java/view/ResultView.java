@@ -1,6 +1,7 @@
 package view;
 
 import model.Person;
+import model.RankedPerson;
 import service.PersonService;
 import service.SessionData;
 
@@ -9,6 +10,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.ArrayList;
 import java.util.List;
 
 @Named
@@ -19,7 +21,7 @@ public class ResultView {
 
     private Integer questionsSize;
 
-    private List<Person> allPersons;
+    private List<RankedPerson> allPersons;
 
     @Inject
     private SessionData sessionData;
@@ -36,7 +38,17 @@ public class ResultView {
             personService.savePerson(currentPerson);
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         }
-        this.allPersons = personService.getAllPersons();
+        int rank = 1;
+        this.allPersons = new ArrayList<>();
+        for (Person person : personService.getAllPersons()) {
+            String name;
+            if (rank<=10) {
+                name = "*************************";
+            } else {
+                name = person.getFirstName() + " " + person.getSurName();
+            }
+            allPersons.add(new RankedPerson(rank++, name, person.getRightAnswers()));
+        }
     }
 
     public Person getCurrentPerson() {
@@ -51,11 +63,11 @@ public class ResultView {
         return this.questionsSize;
     }
 
-    public List<Person> getAllPersons() {
+    public List<RankedPerson> getAllPersons() {
         return allPersons;
     }
 
-    public void setAllPersons(List<Person> allPersons) {
+    public void setAllPersons(List<RankedPerson> allPersons) {
         this.allPersons = allPersons;
     }
 }

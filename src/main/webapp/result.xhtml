@@ -28,10 +28,13 @@
             <f:facet name="Ranking">
                 Ranking
             </f:facet>
-            <p:column headerText="Name">
-                <h:outputText value="#{singlePerson.firstName} #{singlePerson.surName}"/>
+            <p:column headerText="#" style="text-align: center; width: 3em">
+                <h:outputText value="#{singlePerson.rank}"/>
             </p:column>
-            <p:column headerText="Richtige Antworten / Corect Răspunsuri">
+            <p:column headerText="Name">
+                <h:outputText value="#{singlePerson.name}"/>
+            </p:column>
+            <p:column headerText="Richtige Antworten / Corect Răspunsuri" style="text-align: center; width: 10em">
                 <h:outputText value="#{singlePerson.rightAnswers}"/>
             </p:column>
         </p:dataTable>
