@@ -14,6 +14,8 @@ import java.util.List;
 @SessionScoped
 public class SessionData implements Serializable {
 
+    private boolean isAdmin;
+
     private Person currentPerson;
 
     private Integer correctAnswerCounter;
@@ -85,5 +87,13 @@ public class SessionData implements Serializable {
 
     public void setQuestioncounter(Integer questioncounter) {
         this.questioncounter = questioncounter;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }
