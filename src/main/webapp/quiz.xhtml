@@ -9,22 +9,38 @@
 </h:head>
 
 <h:body>
+    <table class="flags">
+        <tr>
+            <td class="flags"><img class="bigflag" src="resources/france.jpg" alt="France"/></td>
+            <td class="flags"><img class="bigflag" src="resources/germany.jpg" alt="Germany"/></td>
+            <td class="flags"><img class="bigflag" src="resources/romania.png" alt="Romania"/></td>
+            <td class="flags"><img class="smalllogo" src="resources/Logo.JPG" alt="Wedding Logo"/></td>
+            <td class="flags"><img class="bigflag" src="resources/austria.png" alt="Autria"/></td>
+            <td class="flags"><img class="bigflag" src="resources/hungary.JPG" alt="Hungary"/></td>
+            <td class="flags"><img class="bigflag" src="resources/europe.jpg" alt="Europe"/></td>
+        </tr>
+    </table>
     <h:form>
-    <h1>Hallo <h:outputText value="#{quizView.currentPerson.firstName}"/> <h:outputText value="#{quizView.currentPerson.surName}"/></h1>
-        <h2>Kategorie: <h:outputText value="#{quizView.currentQuestion.category.name}"/> </h2>
-        <p:dataTable id="questionTable" var="answer"
-                     value="#{quizView.currentQuestion.answers}"
-                     selection="#{quizView.selectedAnswer}"
-                     rowKey="#{answer.answerId}">
-            <f:facet name="header">
-                <h:outputText value="#{sessionData.isGerman() ? quizView.currentQuestion.german : quizView.currentQuestion.romanian}"/>
-            </f:facet>
-            <p:column selectionMode="single" style="width:16px;text-align:center"/>
-            <p:column>
-                <h:outputText value="#{sessionData.isGerman() ? answer.german : answer.romanian}" />
-            </p:column>
-        </p:dataTable>
-        <p:commandButton value="Next" action="#{quizView.nextQuestion}"/>
+        <p style="text-align: right">
+            <b>Category: </b><h:outputText value="#{quizView.currentQuestion.category.name}"/><br/>
+            <b>Frage / întrebare: </b><h:outputText value="#{sessionData.questioncounter} / #{sessionData.questionsSize}"/>
+        </p>
+        <h:panelGroup layout="block">
+            <p:dataTable id="questionTable" var="answer"
+                         value="#{quizView.currentQuestion.answers}"
+                         selection="#{quizView.selectedAnswer}"
+                         rowKey="#{answer.answerId}">
+                <f:facet name="header">
+                    <h:outputText
+                            value="#{sessionData.isGerman() ? quizView.currentQuestion.german : quizView.currentQuestion.romanian}"/>
+                </f:facet>
+                <p:column selectionMode="single" style="width:16px;text-align:center"/>
+                <p:column>
+                    <h:outputText value="#{sessionData.isGerman() ? answer.german : answer.romanian}"/>
+                </p:column>
+            </p:dataTable>
+            <p:commandButton value="Next" action="#{quizView.nextQuestion}"/>
+        </h:panelGroup>
     </h:form>
 </h:body>
 </html>

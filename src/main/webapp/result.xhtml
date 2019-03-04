@@ -16,11 +16,8 @@
             <f:facet name="Ranking">
                 Ranking
             </f:facet>
-            <p:column headerText="First Name">
-                <h:outputText value="#{singlePerson.firstName}"/>
-            </p:column>
-            <p:column headerText="Second Name">
-                <h:outputText value="#{singlePerson.surName}"/>
+            <p:column headerText="Name">
+                <h:outputText value="#{singlePerson.firstName} #{singlePerson.surName}"/>
             </p:column>
             <p:column headerText="Richtige Antworten / Corect Răspunsuri">
                 <h:outputText value="#{singlePerson.rightAnswers}"/>

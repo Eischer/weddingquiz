@@ -27,11 +27,7 @@ public class QuizView implements Serializable {
 
     @PostConstruct
     public void init() {
-        if (sessionData.getQuestioncounter() == null) {
-            this.currentQuestionId = 0;
-        } else {
-            this.currentQuestionId = sessionData.getQuestioncounter();
-        }
+        this.currentQuestionId = sessionData.getQuestioncounter();
         this.currentQuestion = this.sessionData.getQuestions().get(this.currentQuestionId);
         Collections.shuffle(this.currentQuestion.getAnswers());
     }

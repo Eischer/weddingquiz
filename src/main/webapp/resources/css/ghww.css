@@ -4,6 +4,14 @@
     text-align: center;
 }
 
+.flags{
+    margin: 0 auto;
+}
+
+td.flags {
+    padding: 10px;
+}
+
 .ui-panelgrid td {
     text-align: left;
     background-color: #FFD9F2;
@@ -25,6 +33,18 @@
     padding-bottom: 20px;
 }
 
+.smalllogo{
+    margin-top: 15px;
+    height: 90px;
+    width: 100px;
+    padding-bottom: 20px;
+}
+
+.bigflag {
+    height: 40px;
+    width: 40px;
+}
+
 .flag{
     height: 20px;
     width: 20px;
@@ -39,13 +59,20 @@ h1{
     font-weight: bold;
 }
 
+.emphasize{
+    color: seagreen;
+    font-weight: bold;
+}
+
 /* General */
 .left{
     text-align: left;
+    font-weight: bold;
 }
 
 .right{
     text-align: right;
+    font-weight: bold;
 }
 
 .center{

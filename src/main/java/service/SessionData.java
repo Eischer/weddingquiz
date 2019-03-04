@@ -77,6 +77,9 @@ public class SessionData implements Serializable {
     }
 
     public Integer getQuestioncounter() {
+        if (questioncounter == null) {
+            return 0;
+        }
         return questioncounter;
     }
 
