@@ -27,7 +27,7 @@
         </p>
         <h:panelGroup layout="block">
             <h:outputText value="#{sessionData.isGerman() ? lastQuestionView.currentQuestion.german : lastQuestionView.currentQuestion.romanian}"/>
-            <p:inputText value="#{lastQuestionView.answer}" required="true" maxlength="3">
+            <p:inputText value="#{lastQuestionView.answer}" required="true" maxlength="3" size="3" converterMessage="Muss eine Zahl sein / Introduceți un număr">
                 <f:validateLength maximum="3" />
             </p:inputText>
             <p:commandButton value="Next" action="#{lastQuestionView.finish}"/>
