@@ -5,7 +5,10 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@NamedQuery(name = "Question.allQuestions", query = "SELECT q From Question q")
+@NamedQueries({
+        @NamedQuery(name = "Question.allQuestions", query = "SELECT q From Question q ORDER BY q.category.orderNumber"),
+        @NamedQuery(name = "Question.getSchaetzfrage", query = "SELECT q From Question q WHERE q.category.orderNumber = 100")
+})
 public class Question implements Serializable {
 
     @Id

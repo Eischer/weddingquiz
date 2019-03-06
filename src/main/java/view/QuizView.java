@@ -25,6 +25,8 @@ public class QuizView implements Serializable {
     @Inject
     private SessionData sessionData;
 
+    private static final int ORDERN_NUMBER_FOR_SCHAETZ_FRAGE = 100;
+
     @PostConstruct
     public void init() {
         this.currentQuestionId = sessionData.getQuestioncounter();
@@ -38,7 +40,11 @@ public class QuizView implements Serializable {
         }
         sessionData.setQuestioncounter(++this.currentQuestionId);
         if (this.currentQuestionId < this.sessionData.getQuestionsSize()) {
-            return "/quiz.xhtml?faces-redirect=true";
+            if (this.sessionData.getQuestions().get(currentQuestionId).getCategory().getOrderNumber() == ORDERN_NUMBER_FOR_SCHAETZ_FRAGE) {
+                return "/lastQuestion.xhtml?faces-redirect=true";
+            } else {
+                return "/quiz.xhtml?faces-redirect=true";
+            }
         } else {
             return "/result.xhtml?faces-redirect=true";
         }

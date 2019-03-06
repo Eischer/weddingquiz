@@ -17,6 +17,11 @@ public class QuestionService {
         return entityManager.createNamedQuery("Question.allQuestions", Question.class).getResultList();
     }
 
+    public Question getSchaetzfrage() {
+        List<Question> resultList = entityManager.createNamedQuery("Question.getSchaetzfrage", Question.class).getResultList();
+        return (resultList != null && !resultList.isEmpty()) ? resultList.get(0) : null;
+    }
+
     public void saveQuestion(Question question) {
         entityManager.persist(question);
     }

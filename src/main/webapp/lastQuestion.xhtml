@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Welcome to Orsi's and Bernhard's Wedding-quiz</title>
+    <h:outputStylesheet name="css/ghww.css"/>
+</h:head>
+
+<h:body>
+    <table class="flags">
+        <tr>
+            <td class="flags"><img class="bigflag" src="resources/france.jpg" alt="France"/></td>
+            <td class="flags"><img class="bigflag" src="resources/germany.jpg" alt="Germany"/></td>
+            <td class="flags"><img class="bigflag" src="resources/romania.png" alt="Romania"/></td>
+            <td class="flags"><img class="smalllogo" src="resources/Logo.JPG" alt="Wedding Logo"/></td>
+            <td class="flags"><img class="bigflag" src="resources/austria.png" alt="Autria"/></td>
+            <td class="flags"><img class="bigflag" src="resources/hungary.JPG" alt="Hungary"/></td>
+            <td class="flags"><img class="bigflag" src="resources/europe.jpg" alt="Europe"/></td>
+        </tr>
+    </table>
+    <h:form>
+        <p style="text-align: right">
+            <b>Category: </b><h:outputText value="#{lastQuestionView.currentQuestion.category.name}"/><br/>
+            <b>Frage / întrebare: </b><h:outputText value="#{sessionData.questioncounter} / #{sessionData.questionsSize}"/>
+        </p>
+        <h:panelGroup layout="block">
+            <h:outputText value="#{sessionData.isGerman() ? lastQuestionView.currentQuestion.german : lastQuestionView.currentQuestion.romanian}"/>
+            <p:inputText value="#{lastQuestionView.answer}" required="true" maxlength="3">
+                <f:validateLength maximum="3" />
+            </p:inputText>
+            <p:commandButton value="Next" action="#{lastQuestionView.finish}"/>
+        </h:panelGroup>
+    </h:form>
+</h:body>
+</html>
