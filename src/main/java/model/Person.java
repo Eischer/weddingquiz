@@ -20,6 +20,8 @@ public class Person implements Serializable {
 
     private int rightAnswers;
 
+    private int schaetzAnswer;
+
     public Person() {
         // default constructor for hibernate
     }
@@ -68,5 +70,13 @@ public class Person implements Serializable {
 
     public void setRightAnswers(int rightAnswers) {
         this.rightAnswers = rightAnswers;
+    }
+
+    public int getSchaetzAnswer() {
+        return schaetzAnswer;
+    }
+
+    public void setSchaetzAnswer(int schaetzAnswer) {
+        this.schaetzAnswer = schaetzAnswer;
     }
 }

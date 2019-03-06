@@ -2,6 +2,7 @@ package view;
 
 import model.Question;
 import service.QuestionService;
+import service.SessionData;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -20,12 +21,16 @@ public class LastQuestionView implements Serializable {
     @Inject
     private QuestionService questionService;
 
+    @Inject
+    private SessionData sessionData;
+
     @PostConstruct
     public void init() {
         this.currentQuestion = questionService.getSchaetzfrage();
     }
 
     public String finish() {
+        sessionData.getCurrentPerson().setSchaetzAnswer(answer);
         return "/result.xhtml?faces-redirect=true";
     }
 
