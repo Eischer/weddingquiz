@@ -22,8 +22,12 @@
     </table>
     <h1>Klassement / Clasament</h1>
     <h:form>
-        <!--Danke / Köszönöm szepen / Multu mesc <h:outputText value="#{resultView.currentPerson.firstName}"/>!-->
-        <!--Du hast <h:outputText value="#{resultView.currentPerson.rightAnswers}"/> von <h:outputText value="#{resultView.questionsSize}"/> Fragen richtig beantwortet.-->
+        <p>
+            <h:outputText rendered="#{resultView.currentPerson !=null}" value="Danke / Multu mesc "/>
+            <h:outputText rendered="#{resultView.currentPerson !=null}" class="emphasize" value="#{resultView.currentPerson.firstName} #{resultView.currentPerson.surName}"/><br/>
+            <h:outputText rendered="#{resultView.currentPerson !=null}" value="Deine Derzeitige Platzierung "/>
+            <h:outputText rendered="#{resultView.currentPerson !=null}" class="emphasize" value="#{resultView.currentRank == null ? 'Top 10' : resultView.currentRank}"/>
+        </p>
         <p:dataTable id="rankingTable" value="#{resultView.allPersons}" var="singlePerson" rowClasses="even, odd">
             <f:facet name="Ranking">
                 Ranking
@@ -31,7 +35,7 @@
             <p:column headerText="#" style="text-align: center; width: 3em">
                 <h:outputText value="#{singlePerson.rank}"/>
             </p:column>
-            <p:column headerText="Name">
+            <p:column headerText="Name / Nume">
                 <h:outputText value="#{singlePerson.name}"/>
             </p:column>
             <p:column headerText="Richtige Antworten / Corect Răspunsuri" style="text-align: center; width: 10em">

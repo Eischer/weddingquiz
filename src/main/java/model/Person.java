@@ -20,11 +20,6 @@ public class Person implements Serializable {
 
     private int rightAnswers;
 
-    private int schaetzAnswer;
-
-    @Transient
-    private int tempSchaetzAnswerDiff;
-
     public Person() {
         // default constructor for hibernate
     }
@@ -73,21 +68,5 @@ public class Person implements Serializable {
 
     public void setRightAnswers(int rightAnswers) {
         this.rightAnswers = rightAnswers;
-    }
-
-    public int getSchaetzAnswer() {
-        return schaetzAnswer;
-    }
-
-    public void setSchaetzAnswer(int schaetzAnswer) {
-        this.schaetzAnswer = schaetzAnswer;
-    }
-
-    public int getTempSchaetzAnswerDiff() {
-        return tempSchaetzAnswerDiff;
-    }
-
-    public void setTempSchaetzAnswerDiff(int tempSchaetzAnswerDiff) {
-        this.tempSchaetzAnswerDiff = tempSchaetzAnswerDiff;
     }
 }

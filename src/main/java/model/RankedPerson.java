@@ -10,13 +10,10 @@ public class RankedPerson implements Serializable {
 
     private int rightAnswers;
 
-    private Integer schaetzAnswer;
-
-    public RankedPerson(int rank, String name, int rightAnswers, Integer schaetzAnswer) {
+    public RankedPerson(int rank, String name, int rightAnswers) {
         this.rank = rank;
         this.name = name;
         this.rightAnswers = rightAnswers;
-        this.schaetzAnswer = schaetzAnswer;
     }
 
     public int getRank() {
@@ -41,13 +38,5 @@ public class RankedPerson implements Serializable {
 
     public void setRightAnswers(int rightAnswers) {
         this.rightAnswers = rightAnswers;
-    }
-
-    public Integer getSchaetzAnswer() {
-        return schaetzAnswer;
-    }
-
-    public void setSchaetzAnswer(Integer schaetzAnswer) {
-        this.schaetzAnswer = schaetzAnswer;
     }
 }
