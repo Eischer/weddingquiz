@@ -22,6 +22,9 @@ public class Person implements Serializable {
 
     private int schaetzAnswer;
 
+    @Transient
+    private int tempSchaetzAnswerDiff;
+
     public Person() {
         // default constructor for hibernate
     }
@@ -78,5 +81,13 @@ public class Person implements Serializable {
 
     public void setSchaetzAnswer(int schaetzAnswer) {
         this.schaetzAnswer = schaetzAnswer;
+    }
+
+    public int getTempSchaetzAnswerDiff() {
+        return tempSchaetzAnswerDiff;
+    }
+
+    public void setTempSchaetzAnswerDiff(int tempSchaetzAnswerDiff) {
+        this.tempSchaetzAnswerDiff = tempSchaetzAnswerDiff;
     }
 }
